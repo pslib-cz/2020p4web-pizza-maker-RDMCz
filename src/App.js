@@ -1,24 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import Title from "./components/Title";
+import OrderPizza from "./components/OrderPizza";
+import OrderCalzone from "./components/OrderCalzone";
+import Ingredients from "./components/Ingredients";
+import Navigation from "./components/Navigation";
+import NotFound from "./components/NotFound";
+import { Route, Router, Switch } from 'react-router-dom';
+import { createBrowserHistory } from "history";
+import { Container } from "reactstrap";
+
+const history = createBrowserHistory();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+        <Router history={history}>
+            <Navigation></Navigation>
+            <Container>
+                <Switch>
+                    <Route exact path="/" component={Title}></Route>
+                    <Route path="/order/pizza" component={OrderPizza}></Route>
+                    <Route path="/order/calzone" component={OrderCalzone}></Route>
+                    <Route path="/ingredients" component={Ingredients}></Route>
+                    <Route component={NotFound}></Route>
+                </Switch>
+            </Container>
+        </Router>
+    </>
   );
 }
 
