@@ -16,13 +16,13 @@ const Navigation = () => {
     return (
         <div>
             <Navbar color="light" light expand="md">
-                <NavbarBrand href="/">Pizza Maker</NavbarBrand>
+                <NavbarBrand href="/">Pizzotvořič</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
-                        <NavItem><NavLink href="/order/pizza">Order Pizza</NavLink></NavItem>
-                        <NavItem><NavLink href="/order/calzone">Order Calzone</NavLink></NavItem>
-                        <NavItem><NavLink href="/ingredients">Ingredients</NavLink></NavItem>
+                        <NavItem><NavLink href="/order/pizza">Objednat Pizzu</NavLink></NavItem>
+                        <NavItem><NavLink href="/order/calzone">Objednat Calzone</NavLink></NavItem>
+                        <NavItem><NavLink href="/ingredients">Ingredience</NavLink></NavItem>
                     </Nav>
                 </Collapse>
             </Navbar>

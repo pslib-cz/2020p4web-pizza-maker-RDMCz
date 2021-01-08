@@ -5,29 +5,40 @@ import OrderCalzone from "./components/OrderCalzone";
 import Ingredients from "./components/Ingredients";
 import Navigation from "./components/Navigation";
 import NotFound from "./components/NotFound";
+import { PizzaContext } from "./providers/PizzaContext";
 import { Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from "history";
 import { Container } from "reactstrap";
+import { useState } from 'react';
 
 const history = createBrowserHistory();
 
 function App() {
-  return (
-    <>
-        <Router history={history}>
-            <Navigation></Navigation>
-            <Container>
-                <Switch>
-                    <Route exact path="/" component={Title}></Route>
-                    <Route path="/order/pizza" component={OrderPizza}></Route>
-                    <Route path="/order/calzone" component={OrderCalzone}></Route>
-                    <Route path="/ingredients" component={Ingredients}></Route>
-                    <Route component={NotFound}></Route>
-                </Switch>
-            </Container>
-        </Router>
-    </>
-  );
+
+    const [context, setContext] = useState(
+        [
+            {name: "Carpaccio", category: "Maso"}
+        ]
+    );
+
+    return (
+        <>
+            <Router history={history}>
+                <Navigation></Navigation>
+                <Container>
+                    <PizzaContext.Provider value={{ context, setContext }}>
+                        <Switch>
+                            <Route exact path="/" component={Title}></Route>
+                            <Route path="/order/pizza" component={OrderPizza}></Route>
+                            <Route path="/order/calzone" component={OrderCalzone}></Route>
+                            <Route path="/ingredients" component={Ingredients}></Route>
+                            <Route component={NotFound}></Route>
+                        </Switch>
+                    </PizzaContext.Provider>
+                </Container>
+            </Router>
+        </>
+    );
 }
 
 export default App;

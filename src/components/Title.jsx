@@ -1,7 +1,7 @@
 const Title = () => {
     return (
         <>
-            <p>Pizza Maker 2021</p>
+            <h1>Pizzotvořič 2021</h1>
         </>
     )
 }

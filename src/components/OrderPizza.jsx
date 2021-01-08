@@ -1,7 +1,13 @@
+import { useContext } from "react";
+import { PizzaContext } from "../providers/PizzaContext";
+
 const OrderPizza = () => {
+
+    const {context, setContext} = useContext(PizzaContext);
+
     return (
         <>
-            <p>Order Pizza</p>
+            <h3>Objednat Pizzu</h3>
         </>
     )
 }

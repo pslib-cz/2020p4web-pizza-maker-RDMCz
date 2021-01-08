@@ -1,7 +1,7 @@
 const OrderCalzone = () => {
     return (
         <>
-            <p>Order Calzone</p>
+            <h3>Objednat Calzone</h3>
         </>
     )
 }
