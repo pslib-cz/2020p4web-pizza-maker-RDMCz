@@ -1,4 +1,3 @@
-import './App.css';
 import Title from "./components/Title";
 import OrderPizza from "./components/OrderPizza";
 import OrderCalzone from "./components/OrderCalzone";
@@ -8,7 +7,6 @@ import NotFound from "./components/NotFound";
 import { Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from "history";
 import { Container } from "reactstrap";
-import { useState } from 'react';
 import { IngredientsProvider } from './providers/IngredientsProvider';
 
 const history = createBrowserHistory();

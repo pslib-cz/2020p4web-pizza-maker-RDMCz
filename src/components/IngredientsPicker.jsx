@@ -1,9 +1,14 @@
 import { useContext } from "react";
+import { IngredientsContext } from "../providers/IngredientsProvider";
 
 const IngredientsPicker = () => {
+
+    const [state] = useContext(IngredientsContext);
+
     return (
         <>
-            {/*context.map((item, index) => (<p key={index}>{item.name}</p>))*/}
+            <br></br>
+            <p>Maximální počet ingrediencí - {state.maxIngredients}</p>
         </>
     )
 }
