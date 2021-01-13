@@ -5,25 +5,18 @@ import OrderCalzone from "./components/OrderCalzone";
 import Ingredients from "./components/Ingredients";
 import Navigation from "./components/Navigation";
 import NotFound from "./components/NotFound";
-import { PizzaContext } from "./providers/PizzaContext";
 import { Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from "history";
 import { Container } from "reactstrap";
 import { useState } from 'react';
+import { IngredientsProvider } from './providers/IngredientsProvider';
 
 const history = createBrowserHistory();
 
 function App() {
-
-    const [context, setContext] = useState(
-        [
-            {name: "Carpaccio", category: "Maso"}
-        ]
-    );
-
     return (
         <>
-            <PizzaContext.Provider value={{ context, setContext }}>
+            <IngredientsProvider>
                 <Router history={history}>
                     <Navigation></Navigation>
                     <Container>
@@ -36,7 +29,7 @@ function App() {
                         </Switch>
                     </Container>
                 </Router>
-            </PizzaContext.Provider>
+            </IngredientsProvider>
         </>
     );
 }

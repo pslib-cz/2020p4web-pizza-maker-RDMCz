@@ -1,18 +1,18 @@
 import { useContext, useState } from "react";
-import { PizzaContext } from "../providers/PizzaContext";
 import {Table, Input, Button} from "reactstrap";
+import { ADD_INGREDIENT, IngredientsContext } from "../providers/IngredientsProvider";
 
 const Ingredients = () => {
 
-    const {context, setContext} = useContext(PizzaContext);
+    const [state, dispatch] = useContext(IngredientsContext);
 
-    const [text, setText] = useState("");
-    const [categoryText, setCategorytext] = useState("");
+    const [nameInput, setNameInput] = useState("");
+    const [categoryInput, setCategoryInput] = useState("");
 
     return (
         <>
             <br></br>
-            <h3>Ingredience - {context.length}</h3>
+            <h3>Ingredience - {state.ingredients.length}</h3>
 
             <Table>
                 <thead>
@@ -23,9 +23,9 @@ const Ingredients = () => {
                 </thead>
                 <tbody>
                     {
-                        context.map(
-                            (item, i) => (
-                                <tr key={i}>
+                        state.ingredients.map(
+                            (item, index) => (
+                                <tr key={index}>
                                     <td>{item.name}</td>
                                     <td>{item.category}</td>
                                 </tr>
@@ -38,19 +38,24 @@ const Ingredients = () => {
             <h5>Přidat</h5>
             <Input
                 placeholder="Název"
-                value={text}
-                onChange={e=>{setText(e.target.value)}}
+                value={nameInput}
+                onChange={e=>{setNameInput(e.target.value)}}
             ></Input>
             <Input
                 placeholder="Kategorie"
-                value={categoryText}
-                onChange={e=>{setCategorytext(e.target.value)}}
+                value={categoryInput}
+                onChange={e=>{setCategoryInput(e.target.value)}}
             ></Input>
             <Button onClick={() => {
-                if (text !== "" && categoryText !== "") {
-                    setContext([...context, {name: text, category: categoryText}])
-                }
+                dispatch({
+                    type: ADD_INGREDIENT,
+                    name: nameInput,
+                    category: categoryInput,
+                });
+                setNameInput("");
+                setCategoryInput("");
             }}>Přidat</Button>
+            
         </>
     )
 }
