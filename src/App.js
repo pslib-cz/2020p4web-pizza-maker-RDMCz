@@ -23,10 +23,10 @@ function App() {
 
     return (
         <>
-            <Router history={history}>
-                <Navigation></Navigation>
-                <Container>
-                    <PizzaContext.Provider value={{ context, setContext }}>
+            <PizzaContext.Provider value={{ context, setContext }}>
+                <Router history={history}>
+                    <Navigation></Navigation>
+                    <Container>
                         <Switch>
                             <Route exact path="/" component={Title}></Route>
                             <Route path="/order/pizza" component={OrderPizza}></Route>
@@ -34,9 +34,9 @@ function App() {
                             <Route path="/ingredients" component={Ingredients}></Route>
                             <Route component={NotFound}></Route>
                         </Switch>
-                    </PizzaContext.Provider>
-                </Container>
-            </Router>
+                    </Container>
+                </Router>
+            </PizzaContext.Provider>
         </>
     );
 }
